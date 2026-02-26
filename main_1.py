@@ -15,5 +15,29 @@ class Animal:
         self.name = name
         self.animal_species = animal_species
         self.age = age
-
     
+    def get_sound(self):
+
+        if self.animal_species.lower() == "корова":
+            return "му-уу"
+
+        elif self.animal_species.lower() == "лошадь":
+            return "иго-го"
+
+        elif self.animal_species.lower() == "собака":
+            return "гав-гав"
+
+        elif self.animal_species.lower() == "баран":
+            return "бе-еее"
+
+        else:
+            return f"нечленораздельный звук"
+
+    def make_sound(self):
+        sound = self.get_sound()
+        return f"Животное {self.animal_species}. Издает звук {sound}"
+
+a = Animal("Буренка", "корова", 4.5)
+s = Animal.make_sound(a)
+print(a)
+print(s)
