@@ -18,7 +18,8 @@ class Animal:
 
     def __str__(self):
 
-        return f"Животное {self.name}, вид {self.animal_species}. Возраст {self.age} годиков"
+        return f"Животное {self.name}, вид {self.animal_species}. Возраст {self.age} годика-ов."
+
     def get_sound(self):
 
         if self.animal_species.lower() == "корова":
@@ -34,13 +35,16 @@ class Animal:
             return "бе-еее. Проще говоря -блеет"
 
         else:
-            return f"Издает нечленораздельный звук"
+            return f"нечленораздельный звук!"
 
     def make_sound(self):
         sound = self.get_sound()
-        return f"Издает звук {sound}"
+        return f"Издает звук: {sound}"
 
-a = Animal("Буренка", "корова", 4.5)
-s = Animal.make_sound(a)
-print(a)
-print(s)
+    def sound_pls(self):
+        return f"{self.animal_species} издай звук"
+
+a = Animal("Тузик", "Собака", 5)
+p = Animal.sound_pls(a)
+m = Animal.make_sound(a)
+print(a, p, m)
