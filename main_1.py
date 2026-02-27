@@ -47,7 +47,7 @@ class Animal:
 a = Animal("Мурзик", "козел", 5)
 p = Animal.sound_pls(a)
 m = Animal.make_sound(a)
-print(a, p, m)
+
 
 
 # Задача №2.
@@ -63,8 +63,17 @@ class Book:
     num_pages: int
     def __init__(self, title: str, autor: str, num_pages: int):
 
+        if not num_pages > 0:
+            raise ValueError("Страниц в книге не может быть равно или меньше нуля")
+
         self.title = title
         self.autor = autor
         self.num_pages = num_pages
 
-    
+    def open_pages(self):
+        n = int(input("Введите номер страницы > "))
+
+        if not n <= self.num_pages:
+            raise ValueError(f"Номер введенной Вами страницы {n}, превышает количество страниц книги в {self.num_pages} стр.")
+
+        return f"{n} странице"
