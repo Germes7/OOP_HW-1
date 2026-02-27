@@ -39,12 +39,32 @@ class Animal:
 
     def make_sound(self):
         sound = self.get_sound()
-        return f"Издает звук: {sound}"
+        return f"издает звук: {sound}"
 
     def sound_pls(self):
-        return f"{self.animal_species} издай звук"
+        return f"{self.animal_species} издай звук-"
 
-a = Animal("Тузик", "Собака", 5)
+a = Animal("Мурзик", "козел", 5)
 p = Animal.sound_pls(a)
 m = Animal.make_sound(a)
 print(a, p, m)
+
+
+# Задача №2.
+# Сформировать класс «Book» для представления сущности «Книга» в программе.
+# В качестве полей задаются: наименование книги (строка), автор книги (строка), количество страниц (число).
+# Реализовать операции: «отрыть» указанную страницу (на вход в метод передается номер страницы и выводится строка,
+# открылась страница или нет). Реализовать метод вывода информации о книге на экран.
+# Метод вывода на экран должен аккумулировать состояние полей объекта.
+
+class Book:
+    title: str
+    autor: str
+    num_pages: int
+    def __init__(self, title: str, autor: str, num_pages: int):
+
+        self.title = title
+        self.autor = autor
+        self.num_pages = num_pages
+
+    
