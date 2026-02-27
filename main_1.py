@@ -124,7 +124,11 @@ class PassengerPlane:
 
         return PassengerPlane(self.constructor, self.model, self.capacity, new_altitude, new_speed)
 
-    def running_start(self):
+    def __sub__(self, other):
+        new_speed = self.current_speed - other
+        new_altitude = self.current_altitude - other
+
+    def running_start(self): # метод взлета
 
         speed_increase = 300.0
         altitude_increase = 10.0
@@ -135,6 +139,9 @@ class PassengerPlane:
 
         return (f"""Самолет {self.constructor}{self.model} разгоняется для взлета, текущая скорость = {self.current_speed} км/ч.
 Произошел отрыв от земли, текущая высота {self.current_altitude} м. Самолет взлетел.""")
+
+
+
 
 l = PassengerPlane("Ту-", "154", 120)
 print(l)
