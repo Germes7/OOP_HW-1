@@ -77,3 +77,10 @@ class Book:
             raise ValueError(f"Номер введенной Вами страницы {n}, превышает количество страниц книги в {self.num_pages} стр.")
 
         return f"{n} странице"
+
+    def __str__(self):
+        return f"Книга: название -\"{self.title}\". Автор -\"{self.autor}\". Объемом {self.num_pages} стр.\nОткрыта читателем на {self.open_pages()}"
+
+
+b = Book("Паспорт", "Маяковский", 12)
+print(b)
