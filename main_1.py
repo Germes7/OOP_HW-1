@@ -100,20 +100,43 @@ b = Book("Паспорт", "Маяковский", 12)
 # Изменение высоты – операция, которая на вход принимает новое значение высоты и заменяет старое.
 
 class PassengerPlane:
+
     constructor: str
     model: str
     capacity: int
     current_altitude: float
     current_speed: float
-    def __init__(self, constructor: str, model: str, capacity: int, current_altitude=0, current_speed=0):
+    def __init__(self, constructor: str, model: str, capacity: int, current_altitude=0.0, current_speed=0.0):
 
         self.constructor = constructor
         self.model = model
         self.capacity = capacity
-        self.current_altitude = current_altitude
-        self.current_speed = current_speed
+        self.current_altitude = float(current_altitude)
+        self.current_speed = float(current_speed)
 
     def __str__(self):
         return f"""Самолет {self.constructor}{self.model}, подготовлен к взлету. Пассажиров: {self.capacity} чел. + 8 чел. экипажа.
 Текущее состояние: текущая скорость {self.current_speed} км/ч; текущая высота {self.current_altitude} м. над уровнем моря."""
 
+    def __add__(self, other):
+        new_speed = self.current_speed + other
+        new_altitude = self.current_altitude + other
+
+        return PassengerPlane(self.constructor, self.model, self.capacity, new_altitude, new_speed)
+
+    def running_start(self):
+
+        speed_increase = 300.0
+        altitude_increase = 10.0
+        print(f"Начинаем разгон самолета {self.constructor}{self.model} на {speed_increase} км/ч..")
+
+        self.current_speed += speed_increase
+        self.current_altitude += altitude_increase
+
+        return (f"""Самолет {self.constructor}{self.model} разгоняется для взлета, текущая скорость = {self.current_speed} км/ч.
+Произошел отрыв от земли, текущая высота {self.current_altitude} м. Самолет взлетел.""")
+
+l = PassengerPlane("Ту-", "154", 120)
+print(l)
+r = l.running_start()
+print(r)
