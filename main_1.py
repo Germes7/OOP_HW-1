@@ -224,7 +224,16 @@ class MusicAlbum:
         return f"Исполнитель: {self.executor}\nНазвание альбома: {self.album_title}\nМузыкальный жанр: {self.genre_musical}\nПесни: {self.tracks}"
 
     def add_track(self): # метод добавления трека
-        pass
+
+        track = input("Добавьте песню в альбом > ")
+
+        if track.lower() in self.tracks:
+            return f"Такая песня {track} уже есть в альбоме {self.album_title}"
+
+        else:
+            self.tracks.append(track)
+            return f"Песня '{track}' добавлена в альбом {self.album_title}. Список песен в альбоме: {self.tracks}"
+
 
 
     def delete_track(self): # метод удаления трека
@@ -235,4 +244,6 @@ class MusicAlbum:
         pass
 
 a = MusicAlbum("Пугачева", "Поэт", "Лирика", ["Приглашение", "Миллион", "Рассвет"])
+print(a)
+print(a.add_track())
 print(a)
