@@ -142,22 +142,26 @@ class PassengerPlane:
         return (f"""Самолет {self.constructor}{self.model} разгоняется для взлета, текущая скорость = {self.current_speed} км/ч.
 Произошел отрыв от земли, текущая высота {self.current_altitude} м. Самолет взлетел.""")
 
-    def change_height(self): # метод изменения высоты
+    def change_height_min(self, new_altitude: float): # метод изменения высоты (снижение)
 
-        self.current_altitude = 10500.0
+        self.current_altitude = new_altitude
         self.speed_increase = 1350.0
 
         print(f"Самолет летит. Текущая высота полета {self.current_altitude} м, текущая скорость {self.speed_increase} км/ч")
 
         reduction_altitude = float(input("Введите желаемый параметр снижения высоты > "))
 
-        if reduction_altitude < self.current_altitude:
+        if not reduction_altitude < self.current_altitude:
 
-            self.current_altitude -= reduction_altitude
-            print(f"Произошло снижение высоты на {reduction_altitude}. Текущая высота полета {self.current_altitude} м")
+            return "Снижение высоты не может превышать текущую. Иначе ... кабздец!"
 
-        else:
-            raise ValueError("Снижение высоты не может превышать текущую. Иначе ... кабздец!")
+        self.current_altitude -= reduction_altitude
+
+        return f"Произошло снижение высоты на {reduction_altitude} м. Текущая высота полета {self.current_altitude} м"
+
+
+
+    def change_height_max(self): # метод изменения высоты (увеличение)
 
         surge_altitude = float(input("Введите желаемый параметр увеличения высоты > "))
 
@@ -165,12 +169,27 @@ class PassengerPlane:
 
         return f"Произошло увеличение высоты полета на {surge_altitude} м. Текущая высота полета {self.current_altitude} м"
 
+    def landing_plane(self): # метод посадки
+
+        print(f"Самолет {self.constructor}{self.model} пошел на посадку.")
+
+        if self.current_altitude > 0:
+            self.current_altitude = 0
+            self.current_speed = 0
+            return f"""Самолет {self.constructor}{self.model}. Приземлился. Текущая высота полета: {self.current_altitude}, текущая скорость {self.current_speed}.
+Пьяные пассажиры -аплодируют пилотам. Трезвые (бледные на вид) -крестятся и благодарят Бога, что приземлились живыми."""
+
+        else:
+            return f"Самолет {self.constructor}{self.model} на земле"
+
 
 l = PassengerPlane("Ту-", "154", 120)
 print(l)
 r = l.running_start()
 print(r)
-c = l.change_height()
-print(c)
-ch = l.change_height()
-print(ch)
+c_min = l.change_height_min(14000)
+print(c_min)
+c_max = l.change_height_max()
+print(c_max)
+lp = l.landing_plane()
+print(lp)
