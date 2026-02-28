@@ -128,6 +128,8 @@ class PassengerPlane:
         new_speed = self.current_speed - other
         new_altitude = self.current_altitude - other
 
+        return PassengerPlane(self.constructor, self.model, self.capacity, new_altitude, new_speed)
+
     def running_start(self): # метод взлета
 
         speed_increase = 300.0
@@ -142,22 +144,26 @@ class PassengerPlane:
 
     def change_height(self): # метод изменения высоты
 
-        altitude_increase = 10500.0
-        speed_increase = 1350.0
-        print(f"Самолет летит. Текущая высота полета {altitude_increase} м, текущая скорость {speed_increase} км/ч")
+        self.current_altitude = 10500.0
+        self.speed_increase = 1350.0
+
+        print(f"Самолет летит. Текущая высота полета {self.current_altitude} м, текущая скорость {self.speed_increase} км/ч")
 
         reduction_altitude = float(input("Введите желаемый параметр снижения высоты > "))
-        if reduction_altitude < altitude_increase:
+
+        if reduction_altitude < self.current_altitude:
 
             self.current_altitude -= reduction_altitude
             print(f"Произошло снижение высоты на {reduction_altitude}. Текущая высота полета {self.current_altitude} м")
+
         else:
-            ValueError("Снижение высоты не может превышать текущую. Иначе ... кабздец!")
+            raise ValueError("Снижение высоты не может превышать текущую. Иначе ... кабздец!")
 
         surge_altitude = float(input("Введите желаемый параметр увеличения высоты > "))
 
         self.current_altitude += surge_altitude
-        print(f"Произошло увеличение высоты полета на {surge_altitude} м. Текущая высота полета {self.current_altitude} м")
+
+        return f"Произошло увеличение высоты полета на {surge_altitude} м. Текущая высота полета {self.current_altitude} м"
 
 
 l = PassengerPlane("Ту-", "154", 120)
