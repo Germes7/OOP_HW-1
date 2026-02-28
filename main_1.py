@@ -140,10 +140,31 @@ class PassengerPlane:
         return (f"""Самолет {self.constructor}{self.model} разгоняется для взлета, текущая скорость = {self.current_speed} км/ч.
 Произошел отрыв от земли, текущая высота {self.current_altitude} м. Самолет взлетел.""")
 
+    def change_height(self): # метод изменения высоты
 
+        altitude_increase = 10500.0
+        speed_increase = 1350.0
+        print(f"Самолет летит. Текущая высота полета {altitude_increase} м, текущая скорость {speed_increase} км/ч")
+
+        reduction_altitude = float(input("Введите желаемый параметр снижения высоты > "))
+        if reduction_altitude < altitude_increase:
+
+            self.current_altitude -= reduction_altitude
+            print(f"Произошло снижение высоты на {reduction_altitude}. Текущая высота полета {self.current_altitude} м")
+        else:
+            ValueError("Снижение высоты не может превышать текущую. Иначе ... кабздец!")
+
+        surge_altitude = float(input("Введите желаемый параметр увеличения высоты > "))
+
+        self.current_altitude += surge_altitude
+        print(f"Произошло увеличение высоты полета на {surge_altitude} м. Текущая высота полета {self.current_altitude} м")
 
 
 l = PassengerPlane("Ту-", "154", 120)
 print(l)
 r = l.running_start()
 print(r)
+c = l.change_height()
+print(c)
+ch = l.change_height()
+print(ch)
