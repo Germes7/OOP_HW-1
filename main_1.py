@@ -84,7 +84,7 @@ class Book:
         return f"Книга: название -\"{self.title}\". Автор -\"{self.autor}\". Объемом {self.num_pages} стр.\nОткрыта читателем на {self.open_pages()}"
 
 
-b = Book("Паспорт", "Маяковский", 12)
+# b = Book("Паспорт", "Маяковский", 12)
 
 
 # Задача №3.
@@ -182,14 +182,40 @@ class PassengerPlane:
         else:
             return f"Самолет {self.constructor}{self.model} на земле"
 
+# l = PassengerPlane("Ту-", "154", 120)
+# print(l)
+# r = l.running_start()
+# print(r)
+# c_min = l.change_height_min(14000)
+# print(c_min)
+# c_max = l.change_height_max()
+# print(c_max)
+# lp = l.landing_plane()
+# print(lp)
 
-l = PassengerPlane("Ту-", "154", 120)
-print(l)
-r = l.running_start()
-print(r)
-c_min = l.change_height_min(14000)
-print(c_min)
-c_max = l.change_height_max()
-print(c_max)
-lp = l.landing_plane()
-print(lp)
+
+# Задача №4.
+# Сформировать класс « » для представления сущности «Музыкальный Альбом» в программе. В качестве полей задаются:
+# исполнитель, название альбома, жанр, список треков. Реализовать следующие операции:
+# добавить трек в альбом, удалить трек из альбома, воспроизвести указанный трек. Реализовать метод вывода информации
+# о музыкальном альбоме на экран.
+# Метод вывода на экран должен аккумулировать состояние полей объекта.
+# Примечание:
+# Добавить трек в альбом – операция принимает на вход трек в формате строки и добавляет в список треков.
+# Удалить трек из альбома – операция, принимает на вход название трека в формате строки и удаляет трек, если он имеется.
+# Воспроизвести трек – операция, принимает на вход название трека и имитирует его воспроизведение выводом информации на консоль.
+
+class MusicAlbum:
+
+    executor: str
+    album_title: str
+    genre_musical: str
+    tracks: list
+
+    def __init__(self, executor: str, album_title: str, genre_musical: str, tracks: list):
+
+        self.executor = executor
+        self.album_title = album_title
+        self.genre_musical = genre_musical
+        self.tracks = tracks
+
