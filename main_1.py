@@ -195,7 +195,7 @@ class PassengerPlane:
 
 
 # Задача №4.
-# Сформировать класс « » для представления сущности «Музыкальный Альбом» в программе. В качестве полей задаются:
+# Сформировать для представления сущности «Музыкальный Альбом» в программе. В качестве полей задаются:
 # исполнитель, название альбома, жанр, список треков. Реализовать следующие операции:
 # добавить трек в альбом, удалить трек из альбома, воспроизвести указанный трек. Реализовать метод вывода информации
 # о музыкальном альбоме на экран.
@@ -210,12 +210,29 @@ class MusicAlbum:
     executor: str
     album_title: str
     genre_musical: str
-    tracks: list
+    tracks: list[str]
 
-    def __init__(self, executor: str, album_title: str, genre_musical: str, tracks: list):
+    def __init__(self, executor: str, album_title: str, genre_musical: str, tracks: list[str]):
 
         self.executor = executor
         self.album_title = album_title
         self.genre_musical = genre_musical
-        self.tracks = tracks
+        self.tracks = list(tracks)
 
+
+    def __str__(self):
+        return f"Исполнитель: {self.executor}\nНазвание альбома: {self.album_title}\nМузыкальный жанр: {self.genre_musical}\nПесни: {self.tracks}"
+
+    def add_track(self): # метод добавления трека
+        pass
+
+
+    def delete_track(self): # метод удаления трека
+        pass
+
+
+    def play_track(self): # метод воспроизведения трека
+        pass
+
+a = MusicAlbum("Пугачева", "Поэт", "Лирика", ["Приглашение", "Миллион", "Рассвет"])
+print(a)
