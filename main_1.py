@@ -237,7 +237,16 @@ class MusicAlbum:
 
 
     def delete_track(self): # метод удаления трека
-        pass
+
+        track_end = input(f"Какую песню желаете исключить из списка: {self.tracks}? > ")
+
+        if track_end in self.tracks:
+            self.tracks.remove(track_end)
+
+            return f"Обновленный список песен: {self.tracks}"
+
+        else:
+            return f"Песня {track_end} в списке отсутствует"
 
 
     def play_track(self): # метод воспроизведения трека
@@ -247,3 +256,6 @@ a = MusicAlbum("Пугачева", "Поэт", "Лирика", ["Приглаш�
 print(a)
 print(a.add_track())
 print(a)
+d = a.delete_track()
+print(d)
+print(a.tracks)
