@@ -250,7 +250,15 @@ class MusicAlbum:
 
 
     def play_track(self): # метод воспроизведения трека
-        pass
+
+        track_play = input(f"Какую песню из списка: {self.tracks} желаете прослушать? > ")
+
+        if not track_play in self.tracks:
+
+            return f"Пора завязывать пить! Нет такой песни {track_play} в списке песен {self.tracks}"
+
+        else:
+            return f"Играет песня {track_play}"
 
 a = MusicAlbum("Пугачева", "Поэт", "Лирика", ["Приглашение", "Миллион", "Рассвет"])
 print(a)
@@ -259,3 +267,5 @@ print(a)
 d = a.delete_track()
 print(d)
 print(a.tracks)
+p = a.play_track()
+print(p)
